@@ -1,8 +1,9 @@
 export class Ship {
-	constructor(shipLength, position) {
+	constructor(shipLength, position, orientation) {
 		this.shipLength = shipLength;
 		this.position = position;
 		this.hits = Array(shipLength).fill(false);
+		this.orientation = orientation;
 	}
 
 	isSunk() {
@@ -15,5 +16,13 @@ export class Ship {
 
 	hitShip(index) {
 		this.hits[index] = true;
+	}
+
+	rotate() {
+		if (this.orientation === "horizontal") {
+			this.orientation = "vertical";
+		} else {
+			this.orientation = "horizontal";
+		}
 	}
 }
