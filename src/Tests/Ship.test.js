@@ -1,4 +1,4 @@
-import { Ship } from "../src/modules/Ship.js";
+import { Ship } from "../modules/Ship.js";
 
 describe("Ship Class Functionality", () => {
 	test("should create a new ship object", () => {
