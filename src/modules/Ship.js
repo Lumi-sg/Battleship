@@ -18,6 +18,13 @@ export class Ship {
 		this.hits[index] = true;
 	}
 
+	isHit(index) {
+		if (this.hits[index]) {
+			return true;
+		}
+		return false;
+	}
+
 	rotate() {
 		if (this.orientation === "horizontal") {
 			this.orientation = "vertical";

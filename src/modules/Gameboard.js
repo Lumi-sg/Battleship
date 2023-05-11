@@ -71,6 +71,7 @@ export class Gameboard {
 
 	receiveAttack(row, col) {
 		if (this.board[row][col] === null) {
+			this.board[row][col] = true; // Mark the location as a miss
 			return false;
 		} else {
 			const ship = this.board[row][col];
@@ -79,6 +80,7 @@ export class Gameboard {
 			} else {
 				ship.hitShip(row - ship.position.row);
 			}
+			this.board[row][col] = true; // Mark the location as a hit
 			return true;
 		}
 	}

@@ -17,20 +17,25 @@ export class Player {
 	}
 
 	attackRandomSpot() {
-		let availableSpots = [];
+		const availableSpots = [];
 		for (let row = 0; row < this.gameboard.boardSize; row++) {
 			for (let col = 0; col < this.gameboard.boardSize; col++) {
-				if (!this.gameboard.board[row][col]) {
+				const boardPosition = this.gameboard.board[row][col];
+				if (
+					boardPosition === null ||
+					(boardPosition instanceof Ship && !boardPosition.isHit(row, col))
+				) {
 					availableSpots.push({ row, col });
 				}
 			}
 		}
 		if (availableSpots.length === 0) {
-			return false; //no spots left to attack
+			return false;
 		}
 		const randomLocation = Math.floor(Math.random() * availableSpots.length);
 		const { row, col } = availableSpots[randomLocation];
-		return this.receiveAttack(row, col);
+		this.gameboard.receiveAttack(row, col);
+		return true;
 	}
 
 	hasLost() {

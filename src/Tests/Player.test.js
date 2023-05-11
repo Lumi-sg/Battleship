@@ -67,6 +67,7 @@ describe("Player Class Functionality", () => {
 			// create a new player with the above gameboard
 			const player = new Player("Player 1", gameboard);
 			player.receiveAttack(0, 0);
+			player.attackRandomSpot();
 			// call attackRandomSpot and expect it to return false
 			expect(player.attackRandomSpot()).toBe(false);
 		});
@@ -81,6 +82,28 @@ describe("Player Class Functionality", () => {
 
 			// call attackRandomSpot and expect it to return true
 			expect(player.attackRandomSpot()).toBe(true);
+		});
+
+		test("should randomly attack a location and update board and ships", () => {
+			const boardSize = 2;
+			const gameboard = new Gameboard(boardSize);
+			const player = new Player("Player 1", gameboard);
+			ship = new Ship(2, { row: 0, col: 0 }, "horizontal");
+			player.placeShip(ship, { row: 0, col: 0 }, "horizontal");
+			player.attackRandomSpot();
+			player.attackRandomSpot();
+			player.attackRandomSpot();
+			//we attack three times so that at minimum the board AND the ship have been hit at lease once.
+			console.log(player.gameboard);
+			const isAnyIndexHit = player.gameboard.board.some((row) =>
+				row.some((index) => index === true)
+			);
+
+			const anyShipHit = player.gameboard.ships.some((ship) =>
+				ship.hits.some((hit) => hit === true)
+			);
+			expect(isAnyIndexHit).toBe(true);
+			expect(anyShipHit).toBe(true);
 		});
 	});
 });
