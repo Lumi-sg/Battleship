@@ -54,23 +54,7 @@ export class Player {
 		return true;
 	}
 
-	renderGameboard(container, board) {
-		for (let i = 0; i < board.length; i++) {
-			const row = document.createElement("div");
-			row.classList.add("row");
-			for (let j = 0; j < board[i].length; j++) {
-				const square = document.createElement("div");
-				square.classList.add("square");
-				if (board[i][j] instanceof Ship) {
-					square.textContent = "S";
-					square.classList.add("ship");
-				}
-				row.appendChild(square);
-			}
-			container.appendChild(row);
-		}
-		container.classList.add("playerBoard");
-	}
+
 
 	hasLost() {
 		return this.gameboard.allShipsSunk();

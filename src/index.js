@@ -16,8 +16,8 @@ placeCPUShips();
 const p1Container = document.querySelector(".gameboard.playerBoard");
 const cpuContainer = document.querySelector(".gameboard.cpuBoard");
 
-playerOne.renderGameboard(p1Container, playerOne.gameboard.board);
-cpuOne.renderGameboard(cpuContainer, cpuOne.gameboard.board);
+playerOne.gameboard.renderGameboard(p1Container, playerOne.gameboard.board);
+cpuOne.gameboard.renderGameboard(cpuContainer, cpuOne.gameboard.board);
 
 // console.table(playerOne.gameboard.board);
 // console.table(cpuOne.gameboard.board);
