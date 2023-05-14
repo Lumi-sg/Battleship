@@ -4,20 +4,35 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<title>Battleship</title>
 	</head>
 	<body>
 		<div class="Title">
 			<h1 class="TitleText">Battleships!</h1>
 		</div>
-		<div class="shipsRemaining">
-			<h3 class="playerBoard">playerBoard</h3>
-			<h3 class="cpuBoard">cpuBoard</h3>
+		<div class="gameboards">
+			<div class="gameboard-container">
+				<div class="gameboard playerBoard">
+				</div>
+				<div class="shipsRemaining">
+					<p class="playerShips">Player Ships: 5</p>
+				</div>
+			</div>
+			<div class="gameboard-container">
+				<div class="gameboard cpuBoard">
+
+				</div>
+				<div class="shipsRemaining">
+					<p class="cpuShips">CPU Ships: 5</p>
+				</div>
+			</div>
+
 		</div>
-		<div class="gameboardContainer"></div>
-		<div class="shipsRemaining">
-			<h3 class="playerShips">Player ships remaining:</h3>
-			<h3 class="cpuShips">Player ships remaining:</h3>
+		<div class="botofpagecontainer">
+			<footer class="footer">
+				<p>Built by Lumi&nbsp;&nbsp;&nbsp;</a><a href="https://github.com/Lumi-sg/Battleship"style="text-decoration: none;" target="_blank" rel="noopener noreferrer"><i style="font-size:24px" class="fa">&#xf09b;</i></a></p>	
+			  </footer>
 		</div>
 	</body>
 	<script src="main.js"></script>
