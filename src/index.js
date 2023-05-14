@@ -2,7 +2,6 @@ import css from "./styles.css";
 import { Ship } from "./modules/Ship";
 import { Gameboard } from "./modules/Gameboard";
 import { Player } from "./modules/Player";
-import { displayGameBoard } from "./modules/displayGameBoard";
 
 let playerGameBoard = new Gameboard(10);
 let playerOne = new Player("Human", playerGameBoard);
@@ -23,20 +22,20 @@ cpuOne.renderGameboard(cpuContainer, cpuOne.gameboard.board);
 console.table(playerOne.gameboard.board);
 console.table(cpuOne.gameboard.board);
 function placeCPUShips() {
-	const cpuShipOne = new Ship(2, [0, 1], "horizontal");
-	cpuOne.placeShip(cpuShipOne, { row: 2, col: 0 }, "horizontal");
+	const cpuShipTwo = new Ship(2, [28, 38], "vertical");
+	cpuOne.placeShip(cpuShipTwo, { row: 3, col: 8 }, "vertical");
 
-	const cpuShipTwo = new Ship(3, [20, 21, 22], "vertical");
-	cpuOne.placeShip(cpuShipTwo, { row: 0, col: 9 }, "vertical");
+	const cpuShipOne = new Ship(3, [46, 47, 48], "horizontal");
+	cpuOne.placeShip(cpuShipOne, { row: 4, col: 1 }, "horizontal");
 
-	const cpuShipThree = new Ship(3, [39, 49, 59], "horizontal");
-	cpuOne.placeShip(cpuShipThree, { row: 9, col: 2 }, "horizontal");
+	const cpuShipThree = new Ship(3, [25, 26, 27], "horizontal");
+	cpuOne.placeShip(cpuShipThree, { row: 7, col: 4 }, "horizontal");
 
-	const cpuShipFour = new Ship(4, [63, 73, 83, 93], "horizontal");
-	cpuOne.placeShip(cpuShipFour, { row: 5, col: 5 }, "horizontal");
+	const cpuShipFour = new Ship(4, [18, 28, 38, 48], "vertical");
+	cpuOne.placeShip(cpuShipFour, { row: 0, col: 6 }, "vertical");
 
-	const cpuShipFive = new Ship(5, [45, 46, 47, 48, 49], "vertical");
-	cpuOne.placeShip(cpuShipFive, { row: 4, col: 7 }, "vertical");
+	const cpuShipFive = new Ship(5, [32, 42, 52, 62, 72], "horizontal");
+	cpuOne.placeShip(cpuShipFive, { row: 2, col: 0 }, "horizontal");
 }
 
 function placePlayerShips() {

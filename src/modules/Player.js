@@ -70,4 +70,8 @@ export class Player {
 		}
 		container.classList.add("playerBoard");
 	}
+
+	hasLost() {
+		return this.gameboard.allShipsSunk();
+	}
 }

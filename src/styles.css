@@ -97,7 +97,7 @@ body {
 
 .legend-bottom {
 	position: absolute;
-	bottom: -25px;
+	bottom: -25px; /* changed from 25px */
 	display: flex;
 	flex-direction: row;
 	gap: 1.95rem;
@@ -113,23 +113,29 @@ body {
 }
 
 .legend-left {
-	position: absolute;
-	left: 87px;
+	position: fixed;
+	left: 30%;
+	top: 15%;
 	display: flex;
 	flex-direction: column;
-	height: 50%;
+	height: 70%;
 	color: white;
-	top: 20.2%;
-	gap: 1.3rem;
+	gap: 1.31rem;
+	text-align: center;
 }
 
 .legend-right {
-	position: absolute;
-	left: 55.5%;
+	position: fixed;
+	right: 46%;
 	display: flex;
 	flex-direction: column;
-	height: 50%;
+	height: 70%;
 	color: white;
-	top: 20.2%;
-	gap: 1.3rem;
+	top: 20.25%;
+	gap: 1.31rem;
+	text-align: center;
+}
+
+span {
+	color: #6d6d6d;
 }
