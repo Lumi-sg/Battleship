@@ -139,3 +139,8 @@ body {
 span {
 	color: #6d6d6d;
 }
+
+.ship{
+	border: white 1px solid;
+	font-weight: bold;
+}

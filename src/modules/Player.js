@@ -62,7 +62,8 @@ export class Player {
 				const square = document.createElement("div");
 				square.classList.add("square");
 				if (board[i][j] instanceof Ship) {
-					square.textContent = "B";
+					square.textContent = "S";
+					square.classList.add("ship");
 				}
 				row.appendChild(square);
 			}

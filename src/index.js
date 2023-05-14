@@ -38,11 +38,17 @@ function placeCPUShips() {
 
 	const cpuShipFive = new Ship(5, [32, 42, 52, 62, 72], "horizontal");
 	cpuOne.placeShip(cpuShipFive, { row: 2, col: 0 }, "horizontal");
+
+    const cpuShipSix = new Ship(2, [28, 38], "horizontal");
+	cpuOne.placeShip(cpuShipSix, { row: 9, col: 7 }, "horizontal");
 }
 
 function placePlayerShips() {
 	const playerShipTwo = new Ship(2, [5, 6], "vertical");
 	playerOne.placeShip(playerShipTwo, { row: 4, col: 2 }, "vertical");
+
+	const playerShipSix = new Ship(2, [5, 6], "vertical");
+	playerOne.placeShip(playerShipSix, { row: 0, col: 5 }, "vertical");
 
 	const playerShipOne = new Ship(3, [1, 2, 3], "horizontal");
 	playerOne.placeShip(playerShipOne, { row: 0, col: 0 }, "horizontal");
@@ -56,3 +62,4 @@ function placePlayerShips() {
 	const playerShipFive = new Ship(5, [15, 25, 35, 45, 55], "horizontal");
 	playerOne.placeShip(playerShipFive, { row: 8, col: 1 }, "horizontal");
 }
+
