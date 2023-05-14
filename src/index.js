@@ -19,11 +19,13 @@ const cpuContainer = document.querySelector(".gameboard.cpuBoard");
 playerOne.renderGameboard(p1Container, playerOne.gameboard.board);
 cpuOne.renderGameboard(cpuContainer, cpuOne.gameboard.board);
 
-console.table(playerOne.gameboard.board);
-console.table(cpuOne.gameboard.board);
+// console.table(playerOne.gameboard.board);
+// console.table(cpuOne.gameboard.board);
+
+// console.table(cpuOne.gameboard.ships);
 function placeCPUShips() {
 	const cpuShipTwo = new Ship(2, [28, 38], "vertical");
-	cpuOne.placeShip(cpuShipTwo, { row: 3, col: 8 }, "vertical");
+	cpuOne.placeShip(cpuShipTwo, { row: 3, col: 9 }, "vertical");
 
 	const cpuShipOne = new Ship(3, [46, 47, 48], "horizontal");
 	cpuOne.placeShip(cpuShipOne, { row: 4, col: 1 }, "horizontal");
@@ -46,10 +48,10 @@ function placePlayerShips() {
 	playerOne.placeShip(playerShipOne, { row: 0, col: 0 }, "horizontal");
 
 	const playerShipThree = new Ship(3, [8, 9, 10], "horizontal");
-	playerOne.placeShip(playerShipThree, { row: 2, col: 6 }, "horizontal");
+	playerOne.placeShip(playerShipThree, { row: 2, col: 7 }, "horizontal");
 
 	const playerShipFour = new Ship(4, [47, 57, 67, 77], "vertical");
-	playerOne.placeShip(playerShipFour, { row: 4, col: 6 }, "vertical");
+	playerOne.placeShip(playerShipFour, { row: 4, col: 7 }, "vertical");
 
 	const playerShipFive = new Ship(5, [15, 25, 35, 45, 55], "horizontal");
 	playerOne.placeShip(playerShipFive, { row: 8, col: 1 }, "horizontal");

@@ -37,11 +37,23 @@ export class Gameboard {
 		return true;
 	}
 	isShipInBounds(ship) {
-		const leftOfShip = ship.position.col;
-		const rightOfShip = leftOfShip + ship.shipLength - 1;
-		if (leftOfShip < 0 || rightOfShip > this.boardSize - 1) {
-			return false;
+		if (ship.orientation === "horizontal") {
+			const leftOfShip = ship.position.col;
+			const rightOfShip = leftOfShip + ship.shipLength - 1;
+			if (leftOfShip < 0 || rightOfShip > this.boardSize - 1) {
+				console.log("ship out of bounds");
+				return false;
+			}
+		} else {
+			// orientation is 'vertical'
+			const topOfShip = ship.position.row;
+			const bottomOfShip = topOfShip + ship.shipLength - 1;
+			if (topOfShip < 0 || bottomOfShip > this.boardSize - 1) {
+				console.log("ship out of bounds");
+				return false;
+			}
 		}
+		console.log("ship in bounds");
 		return true;
 	}
 
@@ -54,6 +66,7 @@ export class Gameboard {
 					ship.position.col + i >= existingShip.position.col &&
 					ship.position.col + i <= existingShip.position.col + existingShip.shipLength - 1
 				) {
+					console.log("overlap true");
 					return true;
 				}
 			} else {
