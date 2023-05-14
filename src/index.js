@@ -2,19 +2,13 @@ import css from "./styles.css";
 import { Ship } from "./modules/Ship";
 import { Gameboard } from "./modules/Gameboard";
 import { Player } from "./modules/Player";
+import { displayGameBoard } from "./modules/displayGameBoard";
 
-// let player;
-// let gameboard;
-// let ship;
+let playerGameBoard = new Gameboard(10);
+let playerOne = new Player("Human", playerGameBoard);
 
-// gameboard = new Gameboard(2);
-// player = new Player("Player 1", gameboard);
-// console.table(player.gameboard.board);
+let cpuGameBoard = new Gameboard(10);
+let cpuOne = new Player("CPU", cpuGameBoard);
 
-// ship = new Ship(2, { row: 0, col: 0 }, "horizontal");
-// player.placeShip(ship, { row: 0, col: 0 }, "horizontal");
-// console.table(player.gameboard.ships);
-// player.attackRandomSpot();
-// player.attackRandomSpot();
-// console.table(player.gameboard.ships);
-
+displayGameBoard(playerOne);
+displayGameBoard(cpuOne);
