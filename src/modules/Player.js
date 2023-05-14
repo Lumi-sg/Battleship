@@ -49,12 +49,25 @@ export class Player {
 			return false;
 		}
 		const randomLocation = Math.floor(Math.random() * availableSpots.length);
-		const { row, col } = availableSpots[randomLocation];
-		this.gameboard.receiveAttack(row, col);
+		const attack = availableSpots[randomLocation];
+		this.gameboard.receiveAttack(attack.row, attack.col);
 		return true;
 	}
 
-	hasLost() {
-		return this.gameboard.allShipsSunk();
+	renderGameboard(container, board) {
+		for (let i = 0; i < board.length; i++) {
+			const row = document.createElement("div");
+			row.classList.add("row");
+			for (let j = 0; j < board[i].length; j++) {
+				const square = document.createElement("div");
+				square.classList.add("square");
+				if (board[i][j] instanceof Ship) {
+					square.textContent = "B";
+				}
+				row.appendChild(square);
+			}
+			container.appendChild(row);
+		}
+		container.classList.add("playerBoard");
 	}
 }
