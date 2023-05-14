@@ -2,9 +2,25 @@ import { Ship } from "./Ship";
 import { Gameboard } from "./Gameboard";
 
 export class Player {
-	constructor(name, gameboard) {
+	constructor(name, gameboard, turn = false) {
 		this.name = name;
 		this.gameboard = gameboard;
+		this.turn = turn;
+	}
+
+	isTurn() {
+		if (this.turn) {
+			return true;
+		}
+		return false;
+	}
+
+	changeTurn() {
+		if (this.turn) {
+			this.turn = false;
+		} else {
+			this.turn = true;
+		}
 	}
 
 	placeShip(ship, position, orientation) {

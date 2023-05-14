@@ -106,4 +106,23 @@ describe("Player Class Functionality", () => {
 			expect(anyShipHit).toBe(true);
 		});
 	});
+
+	describe("Player Turn", () => {
+		test("should check if it is current player's turn", () => {
+			expect(player.isTurn()).toBe(false);
+			player.turn = true;
+			expect(player.isTurn()).toBe(true);
+		});
+		test("should change the player's turn from false to true", () => {
+			expect(player.isTurn()).toBe(false);
+			player.changeTurn();
+			expect(player.isTurn()).toBe(true);
+		});
+		test("should change the player's turn from true to false", () => {
+			player.turn = true;
+			expect(player.isTurn()).toBe(true);
+			player.changeTurn();
+			expect(player.isTurn()).toBe(false);
+		});
+	});
 });
