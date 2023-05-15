@@ -119,4 +119,8 @@ export class Gameboard {
 	allShipsSunk() {
 		return this.ships.every((ship) => ship.isSunk());
 	}
+
+	numberOfShips() {
+		return this.ships.length;
+	}
 }

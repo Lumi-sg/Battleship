@@ -2,6 +2,7 @@ import css from "./styles.css";
 import { Ship } from "./modules/Ship";
 import { Gameboard } from "./modules/Gameboard";
 import { Player } from "./modules/Player";
+import shipCounter from "./modules/shipCounter";
 
 let playerGameBoard = new Gameboard(10);
 let playerOne = new Player("Human", playerGameBoard);
@@ -10,8 +11,10 @@ let cpuGameBoard = new Gameboard(10);
 let cpuOne = new Player("CPU", cpuGameBoard);
 
 placePlayerShips();
-
 placeCPUShips();
+
+playerOne.shipCounter();
+cpuOne.shipCounter();
 
 const p1Container = document.querySelector(".gameboard.playerBoard");
 const cpuContainer = document.querySelector(".gameboard.cpuBoard");
@@ -19,10 +22,6 @@ const cpuContainer = document.querySelector(".gameboard.cpuBoard");
 playerOne.gameboard.renderGameboard(p1Container, playerOne.gameboard.board);
 cpuOne.gameboard.renderGameboard(cpuContainer, cpuOne.gameboard.board);
 
-// console.table(playerOne.gameboard.board);
-// console.table(cpuOne.gameboard.board);
-
-// console.table(cpuOne.gameboard.ships);
 function placeCPUShips() {
 	const cpuShipTwo = new Ship(2, [28, 38], "vertical");
 	cpuOne.placeShip(cpuShipTwo, { row: 3, col: 9 }, "vertical");

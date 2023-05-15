@@ -54,7 +54,15 @@ export class Player {
 		return true;
 	}
 
-
+	shipCounter() {
+		const playerShipsHTML = document.querySelector(".playerShips");
+		const cpuShipsHTML = document.querySelector(".cpuShips");
+		if (this.name === "Human") {
+			playerShipsHTML.textContent = `Player Ships Remaining: ${this.gameboard.numberOfShips()}`;
+		} else if (this.name === "CPU") {
+			cpuShipsHTML.textContent = `CPU Ships Remaining: ${this.gameboard.numberOfShips()}`;
+		}
+	}
 
 	hasLost() {
 		return this.gameboard.allShipsSunk();
