@@ -1,5 +1,3 @@
-import { defaultMaxListeners } from "events";
-
 export class Ship {
 	constructor(shipLength, position, orientation) {
 		this.shipLength = shipLength;

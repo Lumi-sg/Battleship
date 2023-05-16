@@ -1,6 +1,7 @@
 import { Ship } from "./Ship";
 import { Gameboard } from "./Gameboard";
 import { Player } from "./Player";
+import boardEventGameLoop from "./boardEventGameLoop";
 
 export default function initGame() {
 	let playerGameBoard = new Gameboard(10);
@@ -17,34 +18,7 @@ export default function initGame() {
 	cpuOne.gameboard.renderGameboard(cpuContainer, cpuOne.gameboard.board);
 	playerOne.changeTurn();
 
-	const cpuSquares = document.querySelectorAll(".cpuSquare");
-	cpuSquares.forEach((square) => {
-		square.addEventListener("click", () => {
-			gameFlow();
-
-			function gameFlow() {
-				const row = square.dataset.row;
-				const column = square.dataset.col;
-				console.log(playerOne.turn);
-				if (playerOne.turn) {
-					if (square.textContent !== "X") {
-						square.textContent = "X";
-						cpuOne.receiveAttack(row, column);
-						cpuOne.shipCounter();
-						playerOne.changeTurn();
-						if (cpuOne.hasLost()) {
-							alert("Player has won!");
-						} else if (playerOne.hasLost()) {
-							alert("CPU has won!");
-						}
-						playerOne.attackRandomSpot();
-						playerOne.shipCounter();
-						playerOne.changeTurn();
-					}
-				}
-			}
-		});
-	});
+	boardEventGameLoop(playerOne, cpuOne);
 
 	function placeCPUShips() {
 		const cpuShipTwo = new Ship(2, [28, 38], "vertical");

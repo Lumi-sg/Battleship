@@ -135,4 +135,11 @@ export class Gameboard {
 		}
 		return 0;
 	}
+	clearBoard() {
+		// Clear the board
+		this.board = this.createBoard(this.boardSize);
+
+		// Reset the ships array
+		this.ships = [];
+	}
 }

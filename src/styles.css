@@ -34,8 +34,8 @@ body {
 	flex-direction: column;
 	width: 25vw;
 	height: 25vw;
-	border: 0.25vw solid rgb(2, 2, 112);
-	border-bottom: 0.3vw solid rgb(2, 2, 112);
+	border: 0.25vw solid rgb(0, 0, 169);
+	border-bottom: 0.3vw solid rgb(0, 0, 169);
 	position: relative;
 }
 
@@ -44,8 +44,8 @@ body {
 	flex-direction: column;
 	width: 25vw;
 	height: 25vw;
-	border: 0.25vw solid rgb(112, 2, 2);
-	border-bottom: 0.3vw solid rgb(112, 2, 2);
+	border: 0.25vw solid rgb(205, 0, 0);
+	border-bottom: 0.3vw solid rgb(205, 0, 0);
 	position: relative;
 }
 
@@ -143,7 +143,34 @@ span {
 	font-size: 1vw;
 }
 
-.ship {
-	border: white 0.1vw solid;
+.cpuSquare.ship {
+	border: rgb(205, 0, 0) 1px solid;
 	font-weight: bold;
+}
+
+.humanSquare.ship {
+	border: rgb(0, 0, 169) 1px solid;
+	font-weight: bold;
+}
+.modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 9999;
+}
+
+.modal-content {
+	background-color: #181818;
+	padding: 20px;
+	text-align: center;
+	border: white 1px solid;
+}
+.blur > *:not(.modal) {
+	filter: blur(5px);
+	pointer-events: none;
 }
