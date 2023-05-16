@@ -49,9 +49,20 @@ export class Player {
 			return false;
 		}
 		const randomLocation = Math.floor(Math.random() * availableSpots.length);
-		const attack = availableSpots[randomLocation];
+		const attack = updatePlayerBoard();
 		this.gameboard.receiveAttack(attack.row, attack.col);
 		return true;
+
+		function updatePlayerBoard() {
+			const attack = availableSpots[randomLocation];
+			const attackedSquare = document.querySelector(
+				`.humanSquare[data-row="${attack.row}"][data-col="${attack.col}"]`
+			);
+			if (attackedSquare) {
+				attackedSquare.textContent = "X";
+			}
+			return attack;
+		}
 	}
 
 	shipCounter() {

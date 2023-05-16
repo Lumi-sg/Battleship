@@ -25,15 +25,21 @@ export class Gameboard {
 			for (let j = 0; j < board[i].length; j++) {
 				const square = document.createElement("div");
 				square.classList.add("square");
+				if (container.classList.contains("playerBoard")) {
+					square.classList.add("humanSquare");
+				} else if (container.classList.contains("cpuBoard")) {
+					square.classList.add("cpuSquare");
+				}
 				if (board[i][j] instanceof Ship) {
 					square.textContent = "S";
 					square.classList.add("ship");
 				}
+				square.setAttribute("data-row", i);
+				square.setAttribute("data-col", j);
 				row.appendChild(square);
 			}
 			container.appendChild(row);
 		}
-		container.classList.add("playerBoard");
 	}
 
 	addShip(ship) {
@@ -71,7 +77,6 @@ export class Gameboard {
 				return false;
 			}
 		}
-		console.log("ship in bounds");
 		return true;
 	}
 
@@ -121,6 +126,13 @@ export class Gameboard {
 	}
 
 	numberOfShips() {
-		return this.ships.length;
+		const totalShipAmount = this.ships.length;
+		const sunkenShips = this.ships.filter((ship) =>
+			ship.hits.every((hit) => hit === true)
+		).length;
+		if (totalShipAmount - sunkenShips > 0) {
+			return totalShipAmount - sunkenShips;
+		}
+		return 0;
 	}
 }

@@ -126,7 +126,7 @@ body {
 	position: fixed;
 	display: flex;
 	flex-direction: column;
-	gap: 1.3vw;
+	gap: 1.325vw;
 }
 
 .legend-right {
@@ -135,7 +135,7 @@ body {
 	position: fixed;
 	display: flex;
 	flex-direction: column;
-	gap: 1.3vw;
+	gap: 1.325vw;
 }
 
 span {

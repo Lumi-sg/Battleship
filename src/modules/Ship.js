@@ -1,3 +1,5 @@
+import { defaultMaxListeners } from "events";
+
 export class Ship {
 	constructor(shipLength, position, orientation) {
 		this.shipLength = shipLength;
@@ -8,6 +10,7 @@ export class Ship {
 
 	isSunk() {
 		if (this.hits.every((hit) => hit)) {
+			delete this;
 			return true;
 		} else {
 			return false;
