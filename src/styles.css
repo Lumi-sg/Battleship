@@ -171,6 +171,6 @@ span {
 	border: white 1px solid;
 }
 .blur > *:not(.modal) {
-	filter: blur(5px);
+	filter: blur(2px);
 	pointer-events: none;
 }
