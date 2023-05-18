@@ -47,74 +47,6 @@ export class Gameboard {
 			container.appendChild(row);
 		}
 	}
-
-	addShip(ship) {
-		if (this.isShipOverlap(ship) === true || this.isShipInBounds(ship) === false) {
-			return false;
-		}
-		this.ships.push(ship);
-		const row = ship.position.row;
-		const col = ship.position.col;
-		if (ship.orientation === "horizontal") {
-			for (let i = 0; i < ship.shipLength; i++) {
-				this.board[row][col + i] = ship;
-			}
-		} else {
-			for (let i = 0; i < ship.shipLength; i++) {
-				this.board[row + i][col] = ship;
-			}
-		}
-		return true;
-	}
-	isShipInBounds(ship) {
-		if (ship.orientation === "horizontal") {
-			const leftOfShip = ship.position.col;
-			const rightOfShip = leftOfShip + ship.shipLength - 1;
-			if (leftOfShip < 0 || rightOfShip > this.boardSize - 1) {
-				console.log("ship out of bounds");
-				return false;
-			}
-		} else {
-			// orientation is 'vertical'
-			const topOfShip = ship.position.row;
-			const bottomOfShip = topOfShip + ship.shipLength - 1;
-			if (topOfShip < 0 || bottomOfShip > this.boardSize - 1) {
-				console.log("ship out of bounds");
-				return false;
-			}
-		}
-		return true;
-	}
-
-	isShipOverlap(ship) {
-		for (let i = 0; i < this.ships.length; i++) {
-			let existingShip = this.ships[i];
-			if (ship.position.orientation === "horizontal") {
-				if (
-					ship.position.row === existingShip.position.row &&
-					ship.position.col + i >= existingShip.position.col &&
-					ship.position.col + i <= existingShip.position.col + existingShip.shipLength - 1
-				) {
-					console.log("overlap true");
-					return true;
-				}
-			} else {
-				if (
-					ship.position.col === existingShip.position.col &&
-					ship.position.row + i >= existingShip.position.row &&
-					ship.position.row + i <=
-						existingShip.position.row + existingShip.shipLength - 1 &&
-					ship.position.row >= existingShip.position.row &&
-					ship.position.row <= existingShip.position.row + existingShip.shipLength - 1
-				) {
-					console.log("overlap true");
-					return true;
-				}
-			}
-		}
-		return false;
-	}
-
 	receiveAttack(row, col) {
 		if (this.board[row][col] === null) {
 			this.board[row][col] = true; // Mark the location as a miss
@@ -148,5 +80,55 @@ export class Gameboard {
 	clearBoard() {
 		this.board = this.createBoard(this.boardSize);
 		this.ships = [];
+	}
+
+	addShip(shipLength, position, orientation) {
+		const newShip = new Ship(shipLength, position, orientation);
+		if (this.isShipInBounds(newShip) && !this.isShipOverlap(newShip)) {
+			this.ships.push(newShip);
+			this.placeShipOnBoard(newShip);
+			return true;
+		}
+		return false;
+	}
+
+	isShipInBounds(ship) {
+		if (ship.orientation === "horizontal") {
+			const endCol = ship.position.col + ship.shipLength - 1;
+			return endCol < this.boardSize;
+		} else if (ship.orientation === "vertical") {
+			const endRow = ship.position.row + ship.shipLength - 1;
+			return endRow < this.boardSize;
+		}
+		return false;
+	}
+
+	isShipOverlap(ship) {
+		if (ship.orientation === "horizontal") {
+			for (let col = ship.position.col; col < ship.position.col + ship.shipLength; col++) {
+				if (this.board[ship.position.row][col] !== null) {
+					return true;
+				}
+			}
+		} else if (ship.orientation === "vertical") {
+			for (let row = ship.position.row; row < ship.position.row + ship.shipLength; row++) {
+				if (this.board[row][ship.position.col] !== null) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	placeShipOnBoard(ship) {
+		if (ship.orientation === "horizontal") {
+			for (let col = ship.position.col; col < ship.position.col + ship.shipLength; col++) {
+				this.board[ship.position.row][col] = ship;
+			}
+		} else if (ship.orientation === "vertical") {
+			for (let row = ship.position.row; row < ship.position.row + ship.shipLength; row++) {
+				this.board[row][ship.position.col] = ship;
+			}
+		}
 	}
 }

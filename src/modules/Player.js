@@ -23,10 +23,35 @@ export class Player {
 		}
 	}
 
-	placeShip(ship, position, orientation) {
-		const newShip = new Ship(ship.shipLength, position, orientation);
-		this.gameboard.addShip(newShip);
-		return true;
+	placeRandomShip(size) {
+		let randomPosition = generateRandomPosition(this.gameboard.boardSize);
+		let randomOrientation = generateRandomOrientation();
+
+		let shipAdded = false;
+
+		while (!shipAdded) {
+			shipAdded = this.gameboard.addShip(size, randomPosition, randomOrientation);
+
+			if (shipAdded) {
+				console.log(`Ship with length ${size} added successfully!`);
+			} else {
+				console.log(`Unable to add ship with length ${size}. Retrying...`);
+				randomPosition = generateRandomPosition(this.gameboard.boardSize);
+				randomOrientation = generateRandomOrientation();
+			}
+		}
+
+		function generateRandomPosition(boardSize) {
+			const row = Math.floor(Math.random() * boardSize);
+			const col = Math.floor(Math.random() * boardSize);
+			return { row, col };
+		}
+
+		function generateRandomOrientation() {
+			const orientations = ["horizontal", "vertical"];
+			const randomIndex = Math.floor(Math.random() * orientations.length);
+			return orientations[randomIndex];
+		}
 	}
 
 	receiveAttack(row, col) {

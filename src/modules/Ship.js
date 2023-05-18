@@ -1,7 +1,10 @@
 export class Ship {
 	constructor(shipLength, position, orientation) {
 		this.shipLength = shipLength;
-		this.position = position;
+		this.position = {
+			row: position.row,
+			col: position.col,
+		};
 		this.hits = Array(shipLength).fill(false);
 		this.orientation = orientation;
 	}
@@ -24,13 +27,5 @@ export class Ship {
 			return true;
 		}
 		return false;
-	}
-
-	rotate() {
-		if (this.orientation === "horizontal") {
-			this.orientation = "vertical";
-		} else {
-			this.orientation = "horizontal";
-		}
 	}
 }
