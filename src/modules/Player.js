@@ -25,7 +25,8 @@ export class Player {
 
 	placeShip(ship, position, orientation) {
 		const newShip = new Ship(ship.shipLength, position, orientation);
-		return this.gameboard.addShip(newShip);
+		this.gameboard.addShip(newShip);
+		return true;
 	}
 
 	receiveAttack(row, col) {

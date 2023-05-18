@@ -27,13 +27,19 @@ export class Gameboard {
 				square.classList.add("square");
 				if (container.classList.contains("playerBoard")) {
 					square.classList.add("humanSquare");
+					if (board[i][j] instanceof Ship) {
+						square.textContent = "S";
+						square.classList.add("ship");
+					}
 				} else if (container.classList.contains("cpuBoard")) {
 					square.classList.add("cpuSquare");
+					if (board[i][j] instanceof Ship) {
+						square.textContent = "S";
+						square.classList.add("ship");
+						//REMOVE ABOVE WHEN DONE RANDOM CPU SHIPS
+					}
 				}
-				if (board[i][j] instanceof Ship) {
-					square.textContent = "S";
-					square.classList.add("ship");
-				}
+
 				square.setAttribute("data-row", i);
 				square.setAttribute("data-col", j);
 				row.appendChild(square);
@@ -96,8 +102,12 @@ export class Gameboard {
 				if (
 					ship.position.col === existingShip.position.col &&
 					ship.position.row + i >= existingShip.position.row &&
-					ship.position.row + i <= existingShip.position.row + existingShip.shipLength - 1
+					ship.position.row + i <=
+						existingShip.position.row + existingShip.shipLength - 1 &&
+					ship.position.row >= existingShip.position.row &&
+					ship.position.row <= existingShip.position.row + existingShip.shipLength - 1
 				) {
+					console.log("overlap true");
 					return true;
 				}
 			}
@@ -136,10 +146,7 @@ export class Gameboard {
 		return 0;
 	}
 	clearBoard() {
-		// Clear the board
 		this.board = this.createBoard(this.boardSize);
-
-		// Reset the ships array
 		this.ships = [];
 	}
 }

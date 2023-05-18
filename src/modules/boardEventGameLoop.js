@@ -1,3 +1,4 @@
+import { Ship } from "./Ship";
 import { endTheGame } from "./endTheGame";
 
 export default function boardEventGameLoop(player, computer) {
@@ -6,11 +7,15 @@ export default function boardEventGameLoop(player, computer) {
 		const clickHandler = () => {
 			const row = square.dataset.row;
 			const column = square.dataset.col;
-			console.log(player.turn);
 			if (player.turn) {
 				if (square.textContent !== "X") {
 					square.textContent = "X";
+					if (computer.gameboard.board[row][column] instanceof Ship) {
+						console.log("ship hit");
+						square.classList.add("ship");
+					}
 					computer.receiveAttack(row, column);
+
 					computer.shipCounter();
 					if (computer.hasLost()) {
 						endTheGame("Player", player, computer);
