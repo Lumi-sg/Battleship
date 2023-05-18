@@ -1,21 +1,24 @@
-import { Ship } from "./Ship";
 import { Gameboard } from "./Gameboard";
 import { Player } from "./Player";
 import boardEventGameLoop from "./boardEventGameLoop";
+import placePlayerShips from "./placePlayerShips";
 
 export default function initGame() {
+	const p1Container = document.querySelector(".gameboard.playerBoard");
+	const cpuContainer = document.querySelector(".gameboard.cpuBoard");
 	let playerGameBoard = new Gameboard(10);
 	let playerOne = new Player("Human", playerGameBoard);
 	let cpuGameBoard = new Gameboard(10);
 	let cpuOne = new Player("CPU", cpuGameBoard);
-	placePlayerShips();
+
 	placeCPUShips();
+	cpuOne.gameboard.renderCPUGameBoard(cpuContainer, cpuOne.gameboard.board);
+
+	playerOne.gameboard.renderPlayerBoard(p1Container, playerOne.gameboard.board);
+	placePlayerShips();
 	playerOne.shipCounter();
 	cpuOne.shipCounter();
-	const p1Container = document.querySelector(".gameboard.playerBoard");
-	const cpuContainer = document.querySelector(".gameboard.cpuBoard");
-	playerOne.gameboard.renderGameboard(p1Container, playerOne.gameboard.board);
-	cpuOne.gameboard.renderGameboard(cpuContainer, cpuOne.gameboard.board);
+
 	playerOne.changeTurn();
 
 	boardEventGameLoop(playerOne, cpuOne);
@@ -27,13 +30,5 @@ export default function initGame() {
 		cpuOne.placeRandomShip(3);
 		cpuOne.placeRandomShip(2);
 		cpuOne.placeRandomShip(2);
-	}
-	function placePlayerShips() {
-		playerOne.placeRandomShip(5);
-		playerOne.placeRandomShip(4);
-		playerOne.placeRandomShip(3);
-		playerOne.placeRandomShip(3);
-		playerOne.placeRandomShip(2);
-		playerOne.placeRandomShip(2);
 	}
 }

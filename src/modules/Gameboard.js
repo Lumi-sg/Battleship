@@ -18,7 +18,7 @@ export class Gameboard {
 		return board;
 	}
 
-	renderGameboard(container, board) {
+	renderCPUGameBoard(container, board) {
 		for (let i = 0; i < board.length; i++) {
 			const row = document.createElement("div");
 			row.classList.add("row");
@@ -36,10 +36,31 @@ export class Gameboard {
 					if (board[i][j] instanceof Ship) {
 						square.textContent = "S";
 						square.classList.add("ship");
-						//REMOVE ABOVE WHEN DONE RANDOM CPU SHIPS
+						//REMOVE ABOVE WHEN DONE TESTING
 					}
 				}
 
+				square.setAttribute("data-row", i);
+				square.setAttribute("data-col", j);
+				row.appendChild(square);
+			}
+			container.appendChild(row);
+		}
+	}
+
+	renderPlayerBoard(container, board) {
+		container.innerHTML = "";
+		for (let i = 0; i < board.length; i++) {
+			const row = document.createElement("div");
+			row.classList.add("row");
+			for (let j = 0; j < board.length; j++) {
+				const square = document.createElement("div");
+				square.classList.add("square");
+				square.classList.add("humanSquare");
+				if (board[i][j] instanceof Ship) {
+					square.textContent = "S";
+					square.classList.add("ship");
+				}
 				square.setAttribute("data-row", i);
 				square.setAttribute("data-col", j);
 				row.appendChild(square);
