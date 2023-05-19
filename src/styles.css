@@ -146,12 +146,12 @@ span {
 }
 
 .cpuSquare.ship {
-	border: rgb(205, 0, 0) 1px solid;
+	border: rgb(205, 0, 0) 2px solid;
 	font-weight: bold;
 }
 
 .humanSquare.ship {
-	border: rgb(0, 0, 169) 1px solid;
+	border: rgb(0, 0, 169) 2px solid;
 	font-weight: bold;
 }
 .square.humanSquare.highlight {
