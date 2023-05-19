@@ -15,13 +15,12 @@ export default function initGame() {
 	cpuOne.gameboard.renderCPUGameBoard(cpuContainer, cpuOne.gameboard.board);
 
 	playerOne.gameboard.renderPlayerBoard(p1Container, playerOne.gameboard.board);
-	placePlayerShips();
-	playerOne.shipCounter();
+	placePlayerShips(playerOne, playerOne.gameboard.board, p1Container, cpuOne);
+
 	cpuOne.shipCounter();
 
 	playerOne.changeTurn();
 
-	boardEventGameLoop(playerOne, cpuOne);
 
 	function placeCPUShips() {
 		cpuOne.placeRandomShip(5);

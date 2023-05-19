@@ -33,11 +33,11 @@ export class Gameboard {
 					}
 				} else if (container.classList.contains("cpuBoard")) {
 					square.classList.add("cpuSquare");
-					if (board[i][j] instanceof Ship) {
-						square.textContent = "S";
-						square.classList.add("ship");
-						//REMOVE ABOVE WHEN DONE TESTING
-					}
+					// if (board[i][j] instanceof Ship) {
+					// 	square.textContent = "S";
+					// 	square.classList.add("ship");
+					// 	//REMOVE ABOVE WHEN DONE TESTING
+					// }
 				}
 
 				square.setAttribute("data-row", i);
