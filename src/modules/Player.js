@@ -84,8 +84,10 @@ export class Player {
 			const attackedSquare = document.querySelector(
 				`.humanSquare[data-row="${attack.row}"][data-col="${attack.col}"]`
 			);
-			if (attackedSquare) {
+			if (attackedSquare.classList.contains("ship")) {
 				attackedSquare.textContent = "X";
+			} else {
+				attackedSquare.textContent = "⚬";
 			}
 			return attack;
 		}

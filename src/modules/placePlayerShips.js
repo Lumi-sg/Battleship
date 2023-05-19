@@ -2,13 +2,15 @@ import { Ship } from "./Ship";
 import boardEventGameLoop from "./boardEventGameLoop";
 
 export default function placePlayerShips(player, board, container, cpu) {
-	const playerShipDiv = (document.querySelector(".playerShips").textContent =
-		"Place your ships!");
+	const playerShipDiv = document.querySelector(".playerShips");
+	playerShipDiv.textContent = "Place your ships!";
 
 	let orientation = "horizontal";
 	const rotateButton = document.createElement("button");
-	rotateButton.textContent = "Rotate";
-	const rotateButtonDiv = document.querySelector(".rotateButton").appendChild(rotateButton);
+	rotateButton.textContent = "↻";
+	rotateButton.classList.add("rotateButton");
+	// const rotateButtonDiv = document.querySelector(".rotateButton").appendChild(rotateButton);
+	playerShipDiv.appendChild(rotateButton);
 
 	const body = document.querySelector("body");
 	body.addEventListener("wheel", handleWheel);
@@ -136,7 +138,7 @@ export default function placePlayerShips(player, board, container, cpu) {
 			currentShipIndex++;
 			if (currentShipIndex === shipSizes.length) {
 				//start the game loop
-				rotateButtonDiv.remove(rotateButton);
+				// playerShipDiv.remove(rotateButton);
 				player.shipCounter();
 				console.table(player.gameboard.ships);
 				boardEventGameLoop(player, cpu);

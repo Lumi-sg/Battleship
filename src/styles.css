@@ -77,6 +77,12 @@ body {
 	margin: 2vh 0;
 }
 
+.playerShips {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 .fa {
 	color: white;
 	transition: transform 0.3s ease-in-out;
@@ -146,12 +152,12 @@ span {
 }
 
 .cpuSquare.ship {
-	border: rgb(205, 0, 0) 2px solid;
+	border: rgb(205, 0, 0) 3px solid;
 	font-weight: bold;
 }
 
 .humanSquare.ship {
-	border: rgb(0, 0, 169) 2px solid;
+	border: rgb(0, 0, 169) 3px solid;
 	font-weight: bold;
 }
 .square.humanSquare.highlight {
@@ -181,4 +187,27 @@ span {
 .blur > *:not(.modal) {
 	filter: blur(2px);
 	pointer-events: none;
+}
+
+.rotateButton {
+	border: none;
+	color: rgb(0, 0, 0);
+	border-radius: 0.5rem;
+	font-size: 2.5rem;
+	cursor: pointer;
+	transition: 100ms;
+	font-weight: bold;
+	width: 2.5rem;
+	height: 1.75rem;
+	background-color: #d1cfcf;
+	transition: 100ms;
+	padding-bottom: 2.4rem;
+	padding-right: 2.4rem;
+	line-height: 2rem;
+	margin-left: 0.5rem;
+	text-align: center;
+}
+
+.rotateButton:hover {
+	background-color: white !important;
 }

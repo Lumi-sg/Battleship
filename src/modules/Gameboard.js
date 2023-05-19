@@ -25,20 +25,13 @@ export class Gameboard {
 			for (let j = 0; j < board[i].length; j++) {
 				const square = document.createElement("div");
 				square.classList.add("square");
-				if (container.classList.contains("playerBoard")) {
-					square.classList.add("humanSquare");
-					if (board[i][j] instanceof Ship) {
-						square.textContent = "S";
-						square.classList.add("ship");
-					}
-				} else if (container.classList.contains("cpuBoard")) {
-					square.classList.add("cpuSquare");
-					// if (board[i][j] instanceof Ship) {
-					// 	square.textContent = "S";
-					// 	square.classList.add("ship");
-					// 	//REMOVE ABOVE WHEN DONE TESTING
-					// }
-				}
+
+				square.classList.add("cpuSquare");
+				// if (board[i][j] instanceof Ship) {
+				// 	square.textContent = "S";
+				// 	square.classList.add("ship");
+				// 	//REMOVE ABOVE WHEN DONE TESTING
+				// }
 
 				square.setAttribute("data-row", i);
 				square.setAttribute("data-col", j);
@@ -58,7 +51,7 @@ export class Gameboard {
 				square.classList.add("square");
 				square.classList.add("humanSquare");
 				if (board[i][j] instanceof Ship) {
-					square.textContent = "S";
+					square.textContent = "🛥";
 					square.classList.add("ship");
 				}
 				square.setAttribute("data-row", i);

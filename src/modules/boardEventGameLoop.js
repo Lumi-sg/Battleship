@@ -8,10 +8,11 @@ export default function boardEventGameLoop(player, computer) {
 			const row = square.dataset.row;
 			const column = square.dataset.col;
 			if (player.turn) {
-				if (square.textContent !== "X") {
-					square.textContent = "X";
+				if (square.textContent !== "⚬" && square.textContent !== "🛥") {
+					square.textContent = "⚬";
 					if (computer.gameboard.board[row][column] instanceof Ship) {
 						console.log("ship hit");
+						square.textContent = "🛥";
 						square.classList.add("ship");
 					}
 					computer.receiveAttack(row, column);
@@ -33,7 +34,14 @@ export default function boardEventGameLoop(player, computer) {
 			}
 		};
 
-		const mouseMoveHandler = () => {
+		const mouseOverHandler = () => {
+			if (
+				square.textContent === "🛥" ||
+				square.classList.contains("ship") ||
+				square.textContent === "⚬"
+			) {
+				return;
+			}
 			square.classList.add("cpuHighlight");
 		};
 
@@ -42,7 +50,7 @@ export default function boardEventGameLoop(player, computer) {
 		};
 
 		square.addEventListener("click", clickHandler);
-		square.addEventListener("mouseover", mouseMoveHandler);
+		square.addEventListener("mouseover", mouseOverHandler);
 		square.addEventListener("mouseout", mouseOutHandler);
 	});
 }
