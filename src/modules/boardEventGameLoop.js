@@ -33,6 +33,16 @@ export default function boardEventGameLoop(player, computer) {
 			}
 		};
 
+		const mouseMoveHandler = () => {
+			square.classList.add("cpuHighlight");
+		};
+
+		const mouseOutHandler = () => {
+			square.classList.remove("cpuHighlight");
+		};
+
 		square.addEventListener("click", clickHandler);
+		square.addEventListener("mouseover", mouseMoveHandler);
+		square.addEventListener("mouseout", mouseOutHandler);
 	});
 }

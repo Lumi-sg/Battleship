@@ -118,7 +118,7 @@ export default function placePlayerShips(player, board, container, cpu) {
 		const hoveredSquares = document.querySelectorAll(".square.humanSquare:hover");
 		hoveredSquares.forEach((square) => {
 			if (!square.classList.contains("ship")) {
-				handleMouseOver.call(square); // Reusing handleMouseOver function
+				handleMouseOver.call(square); //
 			}
 		});
 	}
