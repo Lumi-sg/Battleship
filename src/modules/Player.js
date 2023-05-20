@@ -85,7 +85,7 @@ export class Player {
 				`.humanSquare[data-row="${attack.row}"][data-col="${attack.col}"]`
 			);
 			if (attackedSquare.classList.contains("ship")) {
-				attackedSquare.textContent = "X";
+				attackedSquare.textContent = "✕";
 			} else {
 				attackedSquare.textContent = "⚬";
 			}
